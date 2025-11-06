@@ -1,0 +1,163 @@
+.main-header {
+    background: linear-gradient(135deg, #ee4d2d 0%, #ff6533 100%);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo h1 {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.search-bar {
+    flex: 1;
+    display: flex;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    padding: 12px 15px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-btn {
+    background: #ee4d2d;
+    border: none;
+    color: white;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-btn:hover {
+    background: #d73211;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.icon-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.badge {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    background: white;
+    color: #ee4d2d;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Promo Banner */
+.promo-banner {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.banner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.banner-content h2 {
+    color: #d73211;
+    font-size: 24px;
+    margin-bottom: 5px;
+    animation: pulse 2s infinite;
+}
+
+.banner-content p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Category Navigation */
+.category-nav {
+    background: white;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.category-list {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 5px 0;
+}
+
+.category-list::-webkit-scrollbar {
+    height: 4px;
+}
+
+.category-list::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.category-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.category-btn:hover {
+    border-color: #ee4d2d;
+    color: #ee4d2d;
+}
+
+.category-btn.active {
+    background: #ee4d2d;
+    color: white;
+    border-color: #ee4d2d;
+}
+
+.cat-icon {
+    font-size: 18px;
+}

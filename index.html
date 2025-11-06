@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeShopee - Platform E-Commerce Terpercaya</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles-new.css">
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>🛍️ FakeShopee</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Cari produk...">
+                <button class="search-btn" onclick="cariProduk()">
+                    <svg width="20" height="20" viewBox="0 0 20 20">
+                        <path fill="currentColor" d="M8 15c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm0-12c-2.757 0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5z"/>
+                        <path fill="currentColor" d="M19 19l-5.5-5.5 1.414-1.414L20 17.586z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="bukaKeranjang()">
+                    🛒 <span class="badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner" id="promoBanner">
+        <div class="banner-container">
+            <div class="banner-content">
+                <h2>🎉 <span id="promoTitle">Memuat promo spesial...</span></h2>
+                <p id="promoDesc">Bersiaplah untuk penawaran luar biasa!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Flash Sale Section -->
+            <section class="flash-sale">
+                <div class="section-header">
+                    <h2>⚡ Flash Sale</h2>
+                    <div class="countdown" id="countdown">
+                        <span>Berakhir dalam:</span>
+                        <div class="time-box">
+                            <span id="hours">00</span>
+                        </div>
+                        <span>:</span>
+                        <div class="time-box">
+                            <span id="minutes">00</span>
+                        </div>
+                        <span>:</span>
+                        <div class="time-box">
+                            <span id="seconds">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flash-products" id="flashProducts">
+                    <div class="loading-spinner">Memuat flash sale...</div>
+                </div>
+            </section>
+
+            <!-- Holiday Promo Section -->
+            <section class="holiday-section">
+                <div class="section-header">
+                    <h2>🎊 Promo Hari Libur Mendatang</h2>
+                    <select id="countrySelector" class="country-select">
+                        <option value="ID">🇮🇩 Indonesia</option>
+                        <option value="SG">🇸🇬 Singapura</option>
+                        <option value="MY">🇲🇾 Malaysia</option>
+                        <option value="US">🇺🇸 Amerika Serikat</option>
+                    </select>
+                </div>
+                <div class="holiday-grid" id="holidayGrid">
+                    <div class="loading-spinner">Memuat hari libur...</div>
+                </div>
+            </section>
+
+            <!-- Category Navigation (Moved here) -->
+            <section class="category-nav">
+                <div class="container">
+                    <div class="category-list" id="categoryList">
+                        <button class="category-btn active" data-category="all">
+                            <span class="cat-icon">🏠</span>
+                            <span>Semua</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Grid -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>🛍️ Semua Produk</h2>
+                    <div class="filters">
+                        <select id="sortFilter" class="filter-select">
+                            <option value="default">Urutkan Berdasarkan</option>
+                            <option value="price-asc">Harga: Rendah ke Tinggi</option>
+                            <option value="price-desc">Harga: Tinggi ke Rendah</option>
+                            <option value="rating">Rating Tertinggi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    <div class="loading-spinner">Memuat produk...</div>
+                </div>
+            </section>
+
+            <!-- Store Locations Map -->
+            <section class="map-section">
+                <div class="section-header">
+                    <h2>📍 Lokasi Toko</h2>
+                    <button class="view-toggle" onclick="togglePeta()">
+                        <span id="mapToggleText">Tampilkan Peta</span>
+                    </button>
+                </div>
+                <div class="map-container" id="mapContainer" style="display: none;">
+                    <div id="map"></div>
+                    <div class="store-list">
+                        <h3>Toko Kami</h3>
+                        <div id="storeList"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Layanan Pelanggan</h4>
+                    <ul>
+                        <li>Pusat Bantuan</li>
+                        <li>Metode Pembayaran</li>
+                        <li>Pengiriman & Pengantaran</li>
+                        <li>Pengembalian & Penukaran</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tentang FakeShopee</h4>
+                    <ul>
+                        <li>Tentang Kami</li>
+                        <li>Karir</li>
+                        <li>Kebijakan Privasi</li>
+                        <li>Syarat & Ketentuan</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <span>📘 Facebook</span>
+                        <span>📷 Instagram</span>
+                        <span>🐦 Twitter</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FakeShopee. Dibuat dengan FakeStoreAPI, Nager.Date & OpenStreetMap</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🛒 Keranjang Belanja</h3>
+                <button class="close-btn" onclick="tutupKeranjang()">&times;</button>
+            </div>
+            <div class="modal-body" id="cartItems">
+                <p class="empty-cart">Keranjang Anda kosong</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Detail Produk</h3>
+                <button class="close-btn" onclick="tutupDetailModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="productDetails">
+                <div class="loading-spinner">Memuat...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Success Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎉 Pesanan Dikonfirmasi!</h3>
+                <button class="close-btn" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="checkoutDetails">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 64px; margin-bottom: 20px;">✅</div>
+                    <h2 style="color: #4caf50; margin-bottom: 15px;">Terima kasih atas pesanan Anda!</h2>
+                    <div id="orderSummary" style="margin: 20px 0; padding: 20px; background: #f5f5f5; border-radius: 8px;"></div>
+                    <button class="add-cart-btn" style="width: 100%; padding: 15px; font-size: 16px;" onclick="closeCheckoutModal()">Lanjut Belanja</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

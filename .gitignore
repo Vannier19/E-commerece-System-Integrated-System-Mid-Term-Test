@@ -1,0 +1,19 @@
+# Vercel
+.vercel
+
+# Node modules (if any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Old demo files
+demo-*.html
+Shopee-APIs.md
+Public-APIs*.md
+holiday-calendar.html
